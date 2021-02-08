@@ -1,0 +1,18 @@
+<div *ngIf="post">
+  <app-post [post]="post"></app-post>
+
+  <div class="post-comments">
+    <h5>{{totalComments}} comments:</h5>
+
+    <app-comment *ngFor="let item of comments"
+                 [comment]="item"></app-comment>
+  </div>
+
+  <app-reply *ngIf="!reply"
+             [postId]="post.id"
+             (newComment)="newComment($event)"></app-reply>
+</div>
+
+<div *ngIf="notFound">
+  <h3>Not Found</h3>
+</div>

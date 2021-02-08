@@ -1,0 +1,10 @@
+<article class="blog-post">
+  <a [routerLink]="['/post', post.slug]">
+    <h2 class="blog-post-title">{{ post.title }}</h2>
+  </a>
+
+  <p class="blog-post-meta"
+     title="{{ post.publish_date | date:'medium' }}">{{ post.publish_date | date }} by {{ post.author }}</p>
+
+  <div [innerHTML]="post.content"></div>
+</article>

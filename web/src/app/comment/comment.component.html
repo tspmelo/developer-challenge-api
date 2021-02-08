@@ -1,0 +1,17 @@
+<div class="post-comment">
+  <div class="individual-comment">
+    <a href=""
+       (click)="update(); false">reply</a>
+    <span class="post-comment-meta" title="{{ comment.date | date:'medium' }}">{{ comment.user }} on {{ comment.date | date }}</span>
+    <br>
+    <span [innerHTML]="comment.content"></span>
+  </div>
+
+  <app-reply *ngIf="reply === comment.id"
+             [postId]="comment.postId"
+             [parentId]="comment.id"
+             (newComment)="newComment($event)"></app-reply>
+
+  <app-comment *ngFor="let item of comment.children"
+               [comment]="item"></app-comment>
+</div>
